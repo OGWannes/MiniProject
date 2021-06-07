@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block contact %}
+<section id="contact" class="contact">
+			<h2 class="contact__heading title">Contact Me</h2>
+			<div class="contact__wrapper wrapper--large">
+				<div class="contact__visual">
+					<img src="assets/img/contact-visual.png" alt="James Martin's location">
+				</div>
+				{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+             {% endfor %}
+
+{{form_start(form)}}
+				<div class="contact__form">
+					<div class="contact__form-el contact__form-el--name">
+						{{form_widget(form.name, {'attr': {'class': 'form-control','placeholder':"Your Name here"}})}}
+					</div>
+					<div class="contact__form-el contact__form-el--email" >
+							{{form_widget(form.email, {'attr': {'class': 'form-control','placeholder':"Your Email here"}})}}
+						</div>
+					<div class="contact__form-el contact__form-el--message" >
+					{{form_widget(form.message, {'attr': {'class': 'form-control','placeholder':"Your Message"}})}}
+
+					<input class="contact__form-el contact__form-el--submit" type="submit" value="Send">
+			</div>	
+{{form_end(form)}}
+			</div>
+		</section>
+{% endblock %}
